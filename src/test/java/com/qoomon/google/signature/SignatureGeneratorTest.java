@@ -1,7 +1,8 @@
 package com.qoomon.google.signature;
 
 
-import static org.assertj.core.api.Assertions.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class SignatureGeneratorTest {
         final String signature = signatureGenerator.generate(resource);
 
         //THEN
-        assertThat(signature).isEqualTo("chaRF2hTJKOScPr-RQCEhZbSzIE=");
+        assertThat(signature, equalTo("chaRF2hTJKOScPr-RQCEhZbSzIE="));
     }
 
 }

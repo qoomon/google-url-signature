@@ -1,7 +1,7 @@
 package com.qoomon.google.signature;
 
-
-import static org.assertj.core.api.Assertions.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 import java.net.URL;
 
@@ -28,7 +28,8 @@ public class UrlSignerTest {
         final String signedUrl = urlSigner.signRequest(urlString);
 
         //THEN
-        assertThat(signedUrl).isEqualTo("/maps/api/geocode/json?address=New+York&client=clientID&signature=chaRF2hTJKOScPr-RQCEhZbSzIE=");
+        assertThat(signedUrl, equalTo(
+                "/maps/api/geocode/json?address=New+York&client=clientID&signature=chaRF2hTJKOScPr-RQCEhZbSzIE="));
     }
 
 }

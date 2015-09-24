@@ -1,9 +1,7 @@
 package com.qoomon.google.signature;
 
-
-import static org.assertj.core.api.Assertions.*;
-
-import java.net.URL;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
@@ -24,11 +22,10 @@ public class UrlValidatorTest {
         UrlValidator urlValidator = new UrlValidator(signatureGenerator);
 
         //WHEN
-        URL url = new URL(urlString);
         final boolean isValid = urlValidator.validateRequest(urlString);
 
         //THEN
-        assertThat(isValid).isTrue();
+        assertThat(isValid, is(true));
     }
 
 }
