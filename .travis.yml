@@ -1,6 +1,5 @@
 sudo: false
 language: java
-before_install:
 
 jdk:
   - openjdk7

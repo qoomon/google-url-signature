@@ -17,9 +17,7 @@ public class UrlValidatorTest {
         String keyString = "vNIXE0xscrmjlyV-12Nj_BvUPaw=";
         String urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=New+York&client=clientID&signature=chaRF2hTJKOScPr-RQCEhZbSzIE=";
 
-        SignatureGenerator signatureGenerator = new SignatureGenerator(keyString);
-
-        UrlValidator urlValidator = new UrlValidator(signatureGenerator);
+        UrlValidator urlValidator = new UrlValidator(keyString);
 
         //WHEN
         final boolean isValid = urlValidator.validateRequest(urlString);

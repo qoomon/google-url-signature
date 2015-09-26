@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 /**
  * Google uri signer.
- * <p/>
  *
  * @author b.brodersen
  */
@@ -18,8 +17,8 @@ public class UrlValidator {
 
     private final Pattern signaturePattern = Pattern.compile("((.*)&)?signature=(.+)$");
 
-    public UrlValidator(SignatureGenerator signatureGenerator) {
-        this.signatureGenerator = signatureGenerator;
+    public UrlValidator(String keyString) {
+        this.signatureGenerator = new SignatureGenerator(keyString);
     }
 
     public boolean validateRequest(String urlString) throws MalformedURLException {
@@ -32,12 +31,12 @@ public class UrlValidator {
         if (!signatureMatcher.matches()) {
             return false;
         }
-        String query = signatureMatcher.group(2);
+        String unsignedQuery = signatureMatcher.group(2);
         String signature = signatureMatcher.group(3);
 
         // Retrieve the proper URL components to sign
 
-        String resource = url.getPath() + '?' + query;
+        String resource = url.getPath() + '?' + unsignedQuery;
 
         String signatureExpected = signatureGenerator.generate(resource);
         return signature.equals(signatureExpected);

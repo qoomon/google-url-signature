@@ -10,7 +10,6 @@ import javax.xml.bind.DatatypeConverter;
 
 /**
  * Google uri signer.
- * <p/>
  *
  * @author b.brodersen
  */
@@ -26,7 +25,7 @@ public class SignatureGenerator {
         this.key = DatatypeConverter.parseBase64Binary(keyString);
     }
 
-    public String generate( String resource){
+    public String generate(String resource) {
 
         // Get an HMAC-SHA1 signing key from the raw key bytes
         SecretKeySpec sha1Key = new SecretKeySpec(key, "HmacSHA1");

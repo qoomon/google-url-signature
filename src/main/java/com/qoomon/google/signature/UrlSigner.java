@@ -6,17 +6,15 @@ import java.net.URL;
 
 /**
  * Google uri signer.
- * <p/>
  *
  * @author b.brodersen
  */
 public class UrlSigner {
 
-
     private final SignatureGenerator signatureGenerator;
 
-    public UrlSigner(SignatureGenerator signatureGenerator) {
-        this.signatureGenerator = signatureGenerator;
+    public UrlSigner(String keyString) {
+        this.signatureGenerator = new SignatureGenerator(keyString);
     }
 
     public String signRequest(String urlString) throws MalformedURLException {

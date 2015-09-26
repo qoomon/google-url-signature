@@ -19,9 +19,7 @@ public class UrlSignerTest {
         String keyString = "vNIXE0xscrmjlyV-12Nj_BvUPaw=";
         String urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=New+York&client=clientID";
 
-        SignatureGenerator signatureGenerator = new SignatureGenerator(keyString);
-
-        UrlSigner urlSigner = new UrlSigner(signatureGenerator);
+        UrlSigner urlSigner = new UrlSigner(keyString);
 
         //WHEN
         URL url = new URL(urlString);
